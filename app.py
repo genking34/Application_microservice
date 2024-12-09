@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import torch
 import numpy as np
+import os
 
 PORT = int(os.getenv("PORT", 8000))  # Use the PORT environment variable, default to 8000
 
