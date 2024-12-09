@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import torch
 import numpy as np
 
+PORT = int(os.getenv("PORT", 8000))  # Use the PORT environment variable, default to 8000
+
 # Import your model definition
 class RegressionModel(torch.nn.Module):
     def __init__(self, input_dim):
@@ -49,5 +51,8 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)})
 
+# if __name__ == '__main__':
+#     app.run(debug=True)
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=PORT)  # Use host 0.0.0.0 and the PORT variable
